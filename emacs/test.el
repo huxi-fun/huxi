@@ -1,30 +1,3 @@
-# 呼吸中文输入法
-
-版本： 2.0
-
-作者： huxifun@sina.com
-
- 呼吸中文输入法是在 `Emacs` 和 `Vim` 中使用的中文输入法，输入中文比较快捷方便。 
-
-**目录：** 
-
- - [1. 中文编码](#sec-1)
- - [2. Emacs版](#sec-2)
- - [3. Vim版](#sec-3)
- - [4. 小小平台版](#sec-4)
- - [5. Android 手机版](#sec-5)
-
-## 1. 中文编码<a id="sec-1"></a>
-
-中文采用现三码郑码，选取 3500 常用字。
-
-详见 [三码郑码](https://www.yuque.com/smzm/zhengma/)
-
-## 2. Emacs版<a id="sec-2"></a>
-
-举例，先把 emacs 目录放到 `.emacs.d` 中，然后按照下边进行设置。
-
-```emacs-lisp
 (use-package huxi
   :load-path "~/.emacs.d/huxi/emacs"
   :config
@@ -66,46 +39,3 @@
   ;; minibuffer 中输入时关闭中文输入法
   (add-hook 'minibuffer-setup-hook 'deactivate-input-method)
   )
-```
-
-快捷键
-
-`M-SPC` 切换输入法
-
-`C-,` 切换中英文标点
-
-`C-e` 输入英文
-
-`C-n` 选项下一页
-
-`C-p` 选项上一页
-
-`C-m` 输入字母
-
-`C-c` 取消输入
-
-`C-g` 取消当前输入，并切换到英文
-
-`M-u` 删除已经输入的单词
-
-`C-z` 删除选项中前一个字母
-
-`SPC` 选择第一项
-
-
-## 3. Vim 版<a id="sec-5"></a>
-
-详见 vim 目录
-
-
-## 4. 小小平台版<a id="sec-4"></a>
-
-[Yong输入法 - 小小输入法](http://yong.dgod.net/index.php?c=cate&fid=1)
-
-复制 yong 目录
-
-
-## 5. Android 手机版<a id="sec-5"></a>
-
-先安装 `Termux` 和黑客键盘（Hacker’s Keyboard），再安装 Emacs，再按照上边的方法配置。
-
