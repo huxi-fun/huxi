@@ -1,8 +1,8 @@
 # vim:fileencoding=utf-8:list:listchars=trail\:]:
-# version  5.0
-# cyim sm
+# version  6.0
+# huxi sm-3500
 [Description]
-Name=CYIM
+Name=HUXI
 MaxCodes=3
 EndInput=1
 MaxElement=0

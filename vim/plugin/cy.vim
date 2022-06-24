@@ -1,11 +1,11 @@
 " CY Input Method for Chinese
-" 穿越中文输入法 (Vim 版本)
+" 呼吸中文输入法 (Vim 版本)
 " Author: huxifun@sina.com
-" Last Change:	2021-05-27 
-" Release Version: 4.0
+" Last Change:	2022-06-25 
+" Release Version: 6.0
 " License: GPL
 "
-" 主页：https://github.com/cy2081/vim-cyim
+" 主页：https://github.com/huxi-fun/huxi
 "
 " {{{
 "
@@ -163,7 +163,7 @@ endif
 " --------------------------------------------------------------------
 "  初始化 {{{
 let g:cy_ims=[
-            \['cy', '穿越', 'cy.cy'],
+            \['cy', '呼吸', 'cy.cy'],
             \['py', '拼音', 'pinyin.cy'],
             \]
 let g:cy_py = {'helpim':'cy', 'gb':0 } 
