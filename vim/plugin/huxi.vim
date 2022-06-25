@@ -1,4 +1,4 @@
-" CY Input Method for Chinese
+" Huxi Input Method for Chinese
 " 呼吸中文输入法 (Vim 版本)
 " Author: huxifun@sina.com
 " Last Change:	2022-06-25 
@@ -163,8 +163,7 @@ endif
 " --------------------------------------------------------------------
 "  初始化 {{{
 let g:cy_ims=[
-            \['cy', '呼吸', 'cy.cy'],
-            \['py', '拼音', 'pinyin.cy'],
+            \['cy', '呼吸', 'cy-3500.txt'],
             \]
 let g:cy_py = {'helpim':'cy', 'gb':0 } 
 let g:cy_chinesecode = 1 " 是否显示中文字母名称

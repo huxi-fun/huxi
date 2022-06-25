@@ -4,7 +4,7 @@
 
 作者： huxifun@sina.com
 
- 呼吸中文输入法是在 `Emacs` 和 `Vim` 中使用的中文输入法，输入中文比较快捷方便。 
+呼吸中文输入法是在 `Emacs` 和 `Vim/Neovim` 中使用的中文输入法，输入中文比较快捷方便。 
 
 **目录：** 
 
@@ -95,12 +95,11 @@
 
 ## 3. Vim 版<a id="sec-5"></a>
 
-详见 vim 目录
-
+详见 `vim` 目录，支持  `Neovim` 。
 
 ## 4. 小小平台版<a id="sec-4"></a>
 
-[Yong输入法 - 小小输入法](http://yong.dgod.net/index.php?c=cate&fid=1)
+[Yong输入法 - 小小输入法](http://yong.dgod.net/)
 
 复制 yong 目录
 
