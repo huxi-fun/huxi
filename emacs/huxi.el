@@ -409,11 +409,15 @@ whenever possible."
         (reg (concat "^" (regexp-quote code))))
     (save-excursion
       (forward-line 1)
+      ;; (setq hx (if (= 1 (length code))
+      ;;              2
+      ;;            1
+      ;;            ))
       (while (and (looking-at reg)
                   (< cnt maxln))
-        (add-to-list 'completions (buffer-substring-no-properties
-                                   (+ (point) len)
-                                   (+ (point) len 1)))
+        (add-to-list 'completions  (buffer-substring-no-properties
+                                    (+ (point) len)
+                                    (+ (point) len 1)) )
         (forward-line 1)
         (setq cnt (1+ cnt)))
       completions)))
@@ -639,7 +643,6 @@ beginning of line"
 (defun huxi-self-insert-command ()
   "如果在 huxi-first-char 列表中，则查找相应的词条，否则停止转换，插入对应的字符"
   (interactive "*")
-  ;; (message "%S" last-command-event)
   (if (if (huxi-string-emptyp huxi-current-key)
           (member last-command-event huxi-first-char)
         (member last-command-event huxi-total-char))
@@ -849,7 +852,11 @@ beginning of line"
           (if (huxi-get-option 'record-position)
               (cdr (assoc "pos" (cdr huxi-current-choices)))
             1))
-    (huxi-format-page)))
+    ;; (message "cccc: %S" huxi-current-choices )
+    (huxi-format-page)
+    ;; (message "dddd: %S" huxi-current-choices )
+
+    ))
 
 (defun huxi-translate (char)
   (if (functionp huxi-translate-function)
