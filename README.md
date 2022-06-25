@@ -10,13 +10,13 @@
 
  - [1. 中文编码](#sec-1)
  - [2. Emacs版](#sec-2)
- - [3. Vim版](#sec-3)
+ - [3. Vim/Neovim版](#sec-3)
  - [4. 小小平台版](#sec-4)
  - [5. Android 手机版](#sec-5)
 
 ## 1. 中文编码<a id="sec-1"></a>
 
-中文采用现三码郑码，选取 3500 常用字。
+中文采用三码郑码，选取 3500 常用字，单字输入，简单快速。
 
 详见 [三码郑码](https://www.yuque.com/smzm/zhengma/)
 
@@ -93,9 +93,9 @@
 `SPC` 选择第一项
 
 
-## 3. Vim 版<a id="sec-5"></a>
+## 3. Vim/Neovim 版<a id="sec-5"></a>
 
-详见 `vim` 目录，支持  `Neovim` 。
+详见 `vim` 目录。
 
 ## 4. 小小平台版<a id="sec-4"></a>
 
