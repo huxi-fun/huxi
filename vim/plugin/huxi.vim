@@ -97,7 +97,7 @@ let s:cy_five_cn = '|'
 
 " 基本参数设置 {{{
 let g:cy_zhpunc = 0  " 设置默认中文标点输入开关, 1 为开, 默认中文标点, 0 为关，即英文标点
-let g:cy_listmax = 7 " 候选项个数，最多 10 个
+let g:cy_listmax = 10 " 候选项个数，最多 10 个
 let g:cy_esc_autoff = 0 " 设置离开插入模式时是否自动关闭. 1 为自动关闭, 0 为不关闭，保持输入状态
 let g:cy_autoinput = 1 " 设置是否自动上屏，1 为自动上屏，0 为不自动上屏
 let g:cy_circlecandidates = 1 " 设为 1 表示可以在候选页中循环翻页
