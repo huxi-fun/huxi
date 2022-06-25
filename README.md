@@ -84,8 +84,6 @@
 
 `C-c` 取消输入
 
-`C-g` 取消当前输入，并切换到英文
-
 `M-u` 删除已经输入的单词
 
 `C-z` 删除选项中前一个字母
@@ -101,9 +99,11 @@
 
 [Yong输入法 - 小小输入法](http://yong.dgod.net/)
 
+[下载小小输入法](http://yongim.ysepan.com/)
+
 支持Windows, Linux, Android。
 
-复制 yong 目录。
+复制 `yong` 目录中的内容即可。
 
 
 ## 5. Android 手机版<a id="sec-5"></a>

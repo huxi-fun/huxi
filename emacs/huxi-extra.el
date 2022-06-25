@@ -1,3 +1,9 @@
+;;; huxi-extra.el
+
+;;; Commentary:
+
+;;; Code:
+
 (eval-when-compile
   (require 'cl))
 (require 'huxi)
@@ -6,6 +12,7 @@
   (number-sequence ?0 ?9)
   "Punctuation will not insert after this characters.
 If you don't like this funciton, set the variable to nil")
+
 (defvar huxi-insert-ascii-char (cons ?\; "；")
   "*Key used for `huxi-insert-ascii'.")
 
@@ -109,20 +116,14 @@ If you don't like this funciton, set the variable to nil")
   "切换输入法"
   (interactive)
   (if current-input-method
-      (progn
-        (huxi-quit-clear))
-    )
-  (setq huxi-quick-en-on nil)
+      (huxi-quit-clear))
   (toggle-input-method))
 
 (defun huxi-toggle2 ()
   "切换输入法"
   (interactive)
   (if current-input-method
-      (progn
-        (huxi-quit-clear))
-    )
-  (setq huxi-quick-en-on nil)
+      (huxi-quit-clear))
   (toggle-input-method)
   (insert " "))
 
@@ -198,7 +199,8 @@ If you don't like this funciton, set the variable to nil")
           (huxi-remember-select (1+ index))
           (setq huxi-current-str (huxi-choice (nth index (car huxi-current-choices))))))
     (huxi-append-string (huxi-translate last-command-event)))
-  (huxi-terminate-translation))
+  (huxi-terminate-translation)
+  )
 
 (defun huxi-quick-select-2 ()
   "如果没有可选项，插入数字，否则选择对应的词条."

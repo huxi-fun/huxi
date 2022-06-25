@@ -154,6 +154,7 @@ completion  下一个可能的字母（如果 huxi-do-completion 为 t）
     (global-set-key (kbd "`") 'huxi-j2)
     (define-key map [backspace] 'huxi-delete-last-char)
     (define-key map [delete] 'huxi-delete-last-char)
+    (define-key map [escape] 'huxi-quit-clear)
     (define-key map "\C-z" 'huxi-delete-last-char)
     (define-key map (kbd "<left>") 'huxi-delete-last-char)
     (define-key map "\C-n" 'huxi-next-page)
@@ -162,9 +163,6 @@ completion  下一个可能的字母（如果 huxi-do-completion 为 t）
     (define-key map "\C-c" 'huxi-quit-clear)
     ;; (define-key map (kbd "C-,") 'huxi-punc1)
     ;; (define-key map (kbd "C-.") 'huxi-punc2)
-    ;; (define-key map (kbd "M-SPC") 'huxi-toggle)
-    (define-key map (kbd "s-0") 'huxi-toggle)
-    (define-key map (kbd "C-g") 'huxi-toggle)
     (define-key map (kbd "s-j") 'huxi-number-select-char-j1)
     (define-key map (kbd "s-d") 'huxi-number-select-char-j1)
     (define-key map (kbd "s-k") 'huxi-number-select-char-k2)
@@ -319,10 +317,9 @@ OTHER-PROPERTIES 是一些其它的属性，比如，上次的位置，用来输
     param))
 
 ;;;_. common functions
-
 (defsubst huxi-delete-region ()
   "Delete the text in the current translation region of E+."
-  (when huxi-overlay          ; ## todo check
+  (when huxi-overlay
     (if (overlay-start huxi-overlay)
         (delete-region (overlay-start huxi-overlay)
                        (overlay-end huxi-overlay)))))
@@ -558,16 +555,6 @@ beginning of line"
       (funcall huxi-add-completion-function)
     t))
 
-;; (defun huxi-format (key cp tp choice)
-;;   (let ((i 0))
-;;     (format "%s[%d/%d]: %s"
-;;             key  cp tp
-;;             (mapconcat 'identity
-;;                        (mapcar
-;;                         (lambda (c)
-;;                           (format "%d.%s " (setq i (1+ i)) c))
-;;                         choice) " "))))
-
 (defun huxi-format-page ()
   "按当前位置，生成候选词条"
   ;; (message "%S" huxi-current-choices)
@@ -652,7 +639,7 @@ beginning of line"
 (defun huxi-self-insert-command ()
   "如果在 huxi-first-char 列表中，则查找相应的词条，否则停止转换，插入对应的字符"
   (interactive "*")
-  ;; (message "%S" huxi-current-choices)
+  ;; (message "%S" last-command-event)
   (if (if (huxi-string-emptyp huxi-current-key)
           (member last-command-event huxi-first-char)
         (member last-command-event huxi-total-char))
@@ -898,10 +885,12 @@ beginning of line"
 
   ;; 显示当前选择词条
   (when huxi-show-first
-    (insert huxi-current-str))
+    (insert huxi-current-str)
+    )
 
   (if (eq (selected-window) (minibuffer-window))
-      (insert huxi-current-str))
+      (insert huxi-current-str)
+    )
 
   (move-overlay huxi-overlay (overlay-start huxi-overlay) (point))
   ;; Then, show the guidance.
@@ -949,7 +938,8 @@ beginning of line"
         (inhibit-quit t))
     (save-excursion
       (goto-char point-max)
-      (insert string))
+      (insert string)
+      )
     (sit-for 1000000)
     (delete-region point-max (point-max))
     (when quit-flag
@@ -1031,9 +1021,13 @@ Return the input string."
               (setq unread-command-events
                     (string-to-list (this-single-command-raw-keys)))
               ;; (message "unread-command-events: %s" unread-command-events)
-              (huxi-terminate-translation))))
+              ;; 处理其它输入
+              (setq huxi-current-str "")
+              (huxi-terminate-translation)
+              )))
         ;;    (1message "return: %s" huxi-current-str)
-        huxi-current-str)
+        huxi-current-str
+        )
     ;; Since KEY doesn't start any translation, just return it.
     ;; But translate KEY if necessary.
     (char-to-string key)))
