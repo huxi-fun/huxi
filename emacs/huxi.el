@@ -667,15 +667,15 @@ beginning of line"
 
         (let ((cl (length (assoc "completions" huxi-current-choices))))
           (when (or (= 1 cl) (= 2 cl))
-            (if (= 1 (length (car huxi-current-choices)))
-                (huxi-j1)
+            (when (= 1 (length (car huxi-current-choices)))
+              (huxi-j1)
+              (huxi-show)
               )
             ))
         ;; 没有词时只显示key
         (when (string= huxi-current-str huxi-current-key)
-          (setq huxi-current-str "")
-          ;; (huxi-terminate-translation)
-          ))
+          (setq huxi-current-str ""))
+        )
     (huxi-append-string (huxi-translate last-command-event))
     (huxi-terminate-translation)))
 
