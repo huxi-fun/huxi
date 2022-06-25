@@ -27,16 +27,13 @@ one is kept."
         (setq tail (cdr tail))))
     list))
 
-;;;_. customize varable
 (defgroup huxi nil
   "huxi: emacs input method"
   :group 'lhuxi)
 
-
 (defface huxi-string-face '((t (:underline t)))
   "Face to show current string"
   :group 'huxi)
-
 
 (defface huxi-default-face
   '((((class color) (background dark))
@@ -161,6 +158,7 @@ completion  下一个可能的字母（如果 huxi-do-completion 为 t）
     (define-key map "\C-p" 'huxi-previous-page)
     (define-key map "\C-m" 'huxi-quit-no-clear)
     (define-key map "\C-c" 'huxi-quit-clear)
+    (define-key map "\t" 'huxi-table-show-completion)
     ;; (define-key map (kbd "C-,") 'huxi-punc1)
     ;; (define-key map (kbd "C-.") 'huxi-punc2)
     (define-key map (kbd "s-j") 'huxi-number-select-char-j1)

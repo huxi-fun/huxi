@@ -94,10 +94,8 @@
     (setq completion (sort (delete-dups (nreverse completion))
                            (lambda (a b)
                              (< (length (cdr a)) (length (cdr b))))))
-    ;;      (message "%s, %s" huxi-current-choices completion)
     (setcar huxi-current-choices (append (car huxi-current-choices)
                                          completion))
-    ;;      (message "%s, %s" huxi-current-choices completion))
     t)
   ;; )
   )
@@ -202,7 +200,6 @@ can add here."
            huxi-current-key)))))
   (funcall huxi-handle-function))
 
-;; 增加新词
 (defvar huxi-table-minibuffer-map nil)
 (defvar huxi-table-save-always nil)
 (when (null huxi-table-minibuffer-map)
@@ -212,7 +209,7 @@ can add here."
           (define-key map "\C-e" 'huxi-table-minibuffer-forward-char)
           (define-key map "\C-a" 'huxi-table-minibuffer-backward-char)
           map)))
-;;;_. 增加新词
+
 (defun huxi-table-minibuffer-forward-char ()
   (interactive)
   (end-of-line)
@@ -280,4 +277,3 @@ begining or end of the word.
 (add-hook 'kill-emacs-hook 'huxi-table-save-history)
 
 (provide 'huxi-table)
-;;; huxi-table.el ends here

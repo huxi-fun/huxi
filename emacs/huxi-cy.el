@@ -4,7 +4,6 @@
 ;; 1. 能导入输入历史
 ;; 2. 提供造词的命令
 ;; 3. 提供候选的单字
-;; 4. 拼音输入
 ;; 5. 处理标点
 
 ;;; Commentary:
@@ -71,21 +70,21 @@
   (setq huxi-cy-package huxi-current-package)
   (setq huxi-cy-punctuation-list
         (huxi-read-punctuation huxi-cy-package))
-  ;; (let ((map (huxi-mode-map)))
-  ;; (define-key map "\t" 'huxi-table-show-completion)
-  ;; (define-key map "[" 'huxi-quick-select-1)
-  ;; (define-key map "'" 'huxi-quick-select-2)
-  ;; )
+  (let ((map (huxi-mode-map)))
+    (define-key map "\t" 'huxi-table-show-completion)
+    ;; (define-key map "[" 'huxi-quick-select-1)
+    ;; (define-key map "'" 'huxi-quick-select-2)
+    )
 
   ;; (huxi-table-add-user-file huxi-cy-user-file)
   ;; (huxi-table-load-history huxi-cy-history-file)
   (run-hooks 'huxi-cy-load-hook)
   (huxi-set-option 'table-create-word-function 'huxi-cy-create-word)
   (huxi-set-option 'punctuation-list 'huxi-cy-punctuation-list)
-  ;; (huxi-set-option 'translate-chars '(?z)) ;; old
   (huxi-set-option 'all-completion-limit huxi-cy-add-all-completion-limit)
   (huxi-set-option 'char-table huxi-cy-char-table)
   (huxi-set-active-function 'huxi-table-active-function)
+  ;; (huxi-set-option 'translate-chars '(?z)) ;; old
   (setq huxi-cy-initialized t))
 
 (provide 'huxi-cy)
