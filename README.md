@@ -101,10 +101,14 @@
 
 [Yong输入法 - 小小输入法](http://yong.dgod.net/)
 
-复制 yong 目录
+支持Windows, Linux, Android。
+
+复制 yong 目录。
 
 
 ## 5. Android 手机版<a id="sec-5"></a>
 
-先安装 `Termux` 和黑客键盘（Hacker’s Keyboard），再安装 Emacs，再按照上边的方法配置。
+方法1: 安装 `Termux` ，再安装 Emacs 或 Vim，再按照上边的方法配置，同时使用 `Hacker’s Keyboard` 或 `AnySoftKeyboard` 键盘APP会方便些。
+
+方法2: 直接使用 `Yong小小输入法` 手机APP，再复制 `yong` 目录中的内容到 `sdcard/yong` 目录下。
 
