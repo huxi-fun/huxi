@@ -559,7 +559,6 @@ beginning of line"
 
 (defun huxi-format-page ()
   "按当前位置，生成候选词条"
-  ;; (message "%S" huxi-current-choices)
   (let ((end (huxi-page-end)))
     (if (car huxi-current-choices)
         (let* ((start (1- (huxi-page-start)))
@@ -650,7 +649,7 @@ beginning of line"
               (when (< 1 (length (car huxi-current-choices)))
                 (huxi-delete-overlays)
                 (insert (car (car huxi-current-choices))  )
-                (huxi-setup-overlays)
+                ;; (huxi-setup-overlays)
                 )
               (setq huxi-current-key (char-to-string last-command-event)))
           (setq huxi-current-key (concat huxi-current-key (char-to-string last-command-event))))
