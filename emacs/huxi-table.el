@@ -82,7 +82,6 @@
               (forward-line 1))
           (while (looking-at reg)
             (setq line (huxi-line-content))
-            (message "+++: %S" (cdr line))
             (mapc (lambda (c)
                     (when (or (>= len (huxi-get-option 'all-completion-limit))
                               (= (length c) 1) (= (length c) 2) )  ;; 重点

@@ -851,10 +851,7 @@ beginning of line"
           (if (huxi-get-option 'record-position)
               (cdr (assoc "pos" (cdr huxi-current-choices)))
             1))
-    ;; (message "cccc: %S" huxi-current-choices )
     (huxi-format-page)
-    ;; (message "dddd: %S" huxi-current-choices )
-
     ))
 
 (defun huxi-translate (char)
@@ -906,9 +903,9 @@ beginning of line"
     (if (eq (selected-window) (minibuffer-window))
         ;; Show the guidance in the next line of the currrent
         ;; minibuffer.
-        (huxi-minibuffer-message
-         (format "  [%s]\n%s"
-                 current-input-method-title huxi-guidance-str))
+        (huxi-minibuffer-message ""
+                                 ;; (format "  [%s]\n%s" current-input-method-title huxi-guidance-str)
+                                 )
       ;; Show the guidance in echo area without logging.
       (let ((message-log-max nil))
         (if huxi-use-tooltip
@@ -1027,7 +1024,7 @@ Return the input string."
               (setq unread-command-events
                     (string-to-list (this-single-command-raw-keys)))
               ;; (message "unread-command-events: %s" unread-command-events)
-              ;; 处理其它输入
+              ;; 处理其它输入，先清空
               (setq huxi-current-str "")
               (huxi-terminate-translation)
               )))
