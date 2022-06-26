@@ -35,7 +35,7 @@
   :type 'boolean
   :group 'huxi-cy)
 
-(defcustom huxi-cy-add-all-completion-limit 3
+(defcustom huxi-cy-add-all-completion-limit 2
   "在超过输入字符串超过这个长度时会添加所有补全."
   :type 'integer
   :group 'huxi-cy)

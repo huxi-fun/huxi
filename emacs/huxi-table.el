@@ -84,7 +84,7 @@
           (setq line (huxi-line-content))
           (mapc (lambda (c)
                   (when (or (>= len (huxi-get-option 'all-completion-limit))
-                            (= (length c) 1) (= (length c) 2) )
+                            (= (length c) 1) (= (length c) 2) )  ;; 重点
                     (push (cons c (substring
                                    (car line)
                                    len))
