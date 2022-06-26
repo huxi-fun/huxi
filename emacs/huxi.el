@@ -644,7 +644,9 @@ beginning of line"
           (member last-command-event huxi-first-char)
         (member last-command-event huxi-total-char))
       (progn
-        (if (= (length huxi-current-key) huxi-max-codes)
+        (if (or (= (length huxi-current-key) huxi-max-codes)
+                (and (= 2 (length huxi-current-key))
+                     (= 1 (length (assoc "completions" huxi-current-choices)))))
             (progn
               (when (< 1 (length (car huxi-current-choices)))
                 (huxi-delete-overlays)
