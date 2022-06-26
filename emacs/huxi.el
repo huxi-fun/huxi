@@ -649,7 +649,7 @@ beginning of line"
               (when (< 1 (length (car huxi-current-choices)))
                 (huxi-delete-overlays)
                 (insert (car (car huxi-current-choices))  )
-                ;; (huxi-setup-overlays)
+                (huxi-setup-overlays)
                 )
               (setq huxi-current-key (char-to-string last-command-event)))
           (setq huxi-current-key (concat huxi-current-key (char-to-string last-command-event))))
