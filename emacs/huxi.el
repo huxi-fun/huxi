@@ -640,21 +640,35 @@ beginning of line"
 (defun huxi-self-insert-command ()
   "如果在 huxi-first-char 列表中，则查找相应的词条，否则停止转换，插入对应的字符"
   (interactive "*")
+  ;; (message "==== %S" huxi-current-choices)
   (if (if (huxi-string-emptyp huxi-current-key)
           (member last-command-event huxi-first-char)
         (member last-command-event huxi-total-char))
       (progn
-        (if (or (= (length huxi-current-key) huxi-max-codes)
-                (and (= 2 (length huxi-current-key))
-                     (= 1 (length (assoc "completions" huxi-current-choices)))))
-            (progn
-              (when (< 1 (length (car huxi-current-choices)))
-                (huxi-delete-overlays)
-                (insert (car (car huxi-current-choices))  )
-                (huxi-setup-overlays)
-                )
-              (setq huxi-current-key (char-to-string last-command-event)))
-          (setq huxi-current-key (concat huxi-current-key (char-to-string last-command-event))))
+        (let* ((key-len (length huxi-current-key) )
+               (ch-list (assoc "completions" huxi-current-choices))
+               (ch-len (length ch-list))
+               (cc (car (car huxi-current-choices)))
+               )
+          (if (or (= (length huxi-current-key) huxi-max-codes)
+                  (and (= 2 key-len)
+                       (= 1 ch-len))
+                  (and (= 2 key-len)
+                       (= ch-len 2)
+                       (not (seq-contains-p ch-list
+                                            (char-to-string last-command-event)
+                                            ))
+                       (stringp cc))
+
+                  )
+              (progn
+                (when (< 1 (length (car huxi-current-choices)))
+                  (huxi-delete-overlays)
+                  (insert cc  )
+                  (huxi-setup-overlays)
+                  )
+                (setq huxi-current-key (char-to-string last-command-event)))
+            (setq huxi-current-key (concat huxi-current-key (char-to-string last-command-event)))))
 
         (funcall huxi-handle-function)
 
@@ -664,6 +678,7 @@ beginning of line"
         ;;     ;; (message "")
         ;;     ))
 
+        ;; (message "=====: %S" huxi-current-choices)
         (let ((cl (length (assoc "completions" huxi-current-choices))))
           (when (or (= 1 cl) (= 2 cl))
             (when (= 1 (length (car huxi-current-choices)))
@@ -853,7 +868,9 @@ beginning of line"
           (if (huxi-get-option 'record-position)
               (cdr (assoc "pos" (cdr huxi-current-choices)))
             1))
+    ;; (message "==1: %S" huxi-current-choices)
     (huxi-format-page)
+    ;; (message "==2: %S" huxi-current-choices)
     ))
 
 (defun huxi-translate (char)

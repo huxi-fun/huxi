@@ -64,8 +64,9 @@
 
 ;;;_. 增加补全
 (defun huxi-table-add-completion ()
-  ;; comment out for single key also check completion
-  (if (= (length (assoc "completions" huxi-current-choices)) 1)
+  (if (or (= (length (assoc "completions" huxi-current-choices)) 1)
+          (= (length (car huxi-current-choices))
+             (length (assoc "completions" huxi-current-choices))))
       t
     (let ((reg (concat "^" (regexp-quote huxi-current-key)))
           (len (length huxi-current-key))

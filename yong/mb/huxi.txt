@@ -615,7 +615,6 @@ eyj ÇÑ
 eym Èø
 eyo ËÕ
 eyq Òñ
-eyt ½Ú
 eyv ½Ú
 eyy Àó
 eze Õå
@@ -2545,7 +2544,7 @@ uuk Ô÷
 uuo Ñ×
 uur ÔÃ
 uuv ¸â
-uv Ç° ¸ş
+uv Ç°
 uwj ²Ú ÈÛ
 uwm Â¯
 uwr ³À
