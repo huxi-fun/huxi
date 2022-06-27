@@ -61,11 +61,17 @@
 
                                     )))
                         choice) "   "))))
-
+(defun huxi-table-count-cons (list)
+  (let ((value 0))
+    (dolist (elt list value)
+      (if (consp elt)
+          (setq value (+ value 1))
+        )
+      )))
 ;;;_. 增加补全
 (defun huxi-table-add-completion ()
   (if (or (= (length (assoc "completions" huxi-current-choices)) 1)
-          (= (length (car huxi-current-choices))
+          (= (1+ (huxi-table-count-cons (car huxi-current-choices)) )
              (length (assoc "completions" huxi-current-choices))))
       t
     (let ((reg (concat "^" (regexp-quote huxi-current-key)))
