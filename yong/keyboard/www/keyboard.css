@@ -1,0 +1,505 @@
+/*
+ * dgod: don't need the font just now
+ */
+
+@font-face {
+  font-family: 'Keyboard Symbols';
+  font-weight: 600;
+  src: url('fonts/Keyboard-Symbols.ttf');
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;  
+  -webkit-tap-highlight-color: rgba(255,255,255,0);
+  -webkit-tap-highlight-color: transparent;
+  -webkit-focus-ring-color: rgba(0, 0, 0, 0);
+  outline: none;
+}
+
+html {
+  pointer-events: none;
+}
+
+body {
+  overflow: hidden;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+.keyboard-key:focus {
+	outline: none;
+}
+
+/* Keyboard */
+#keyboard {
+  position: absolute;
+  /* dgod: remove bottom, else android not show the keyboard */
+  /* bottom: 0; */
+  z-index: 15;
+  width: 100%;
+  background: #111111;
+  border-top: solid 1px #000;
+  pointer-events: auto;
+}
+
+/* Rows */
+.keyboard-row {
+  width: 100%;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.keyboard-row.first-row {
+  /* dgod 0.5 is too big, 0.3 may better */
+  padding-top: 0.3rem;
+  border-top: solid 1px #a6a9ab;
+}
+
+/* Buttons: logic keys */
+.keyboard-key {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  /* dgod work around webkit bug */
+  /*padding: 0 0.1rem;*/
+  padding: 0 1px;
+  /*background: url(images/key-shadow.png) no-repeat center -1px;
+  background-size: 100% 100%;*/
+  background: none;
+  min-width: 2.6rem;
+  display: inline-block;
+  border: none;
+  border-bottom: 0rem solid transparent;
+}
+
+/* Visible keys */
+.keyboard-key > .visual-wrapper {
+  display: inline-block;
+  height: 6rem;/*按键高度*/
+  margin-bottom: -0.1rem;
+  width: 100%;
+  /* dgod use the better name */
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  position: relative;
+  border: solid 0px #000;
+  border-radius:5px;
+  /*background: #252220 url(images/key-bg.png) no-repeat center bottom;*/
+  background-size: 100% 100%;
+  background-color: #24272D;
+}
+
+/* Standard key styles. */
+.keyboard-key > .visual-wrapper > span {
+  position: absolute;
+  top: -1px;
+  bottom: -1px;
+  left: -1px;
+  right: -1px;
+  font: 2.5rem/3.8rem Sans-serif;/*主字体大小和位置*/
+  font-weight: 500;
+  text-align: center;
+  color: #B1B2B6;
+  /* dgod: center and let button big */
+  padding-top: 0.5rem;
+  padding-bottom: 0.3rem;
+}
+
+/* Highlights */
+.keyboard-key:not(.special-key).highlighted {
+  position: relative;
+  z-index: 100;
+}
+.keyboard-key:not(.special-key).highlighted > .visual-wrapper {
+  background: #009E95;
+  border: solid 1px #009E95;
+  border-top: none;
+  margin: -0.5rem 0 0;
+  /*height: 5.0rem;
+  bottom: 0.3rem;*/
+  /*height: 3.8rem;*/
+  height: 6rem;/*非特殊键弹出高亮的高度*/
+  bottom: 0.0rem;
+}
+
+.keyboard-key:not(.special-key).highlighted > .visual-wrapper:after {
+  content: "";
+  position: absolute;
+  left: 0rem;
+  top: 0rem;
+  bottom: 0rem;
+  right: 0rem;
+  z-index: -1;
+  background-color: #363839;
+}
+.keyboard-key:not(.special-key).highlighted:last-child > .visual-wrapper:after {
+  right: 0rem;
+}
+.keyboard-key:not(.special-key).highlighted > .visual-wrapper:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0.5rem;
+  background: #009E95;
+  z-index: 1;
+} 
+
+.keyboard-key:not(.special-key).highlighted > .visual-wrapper > span {
+  font: 4.4rem/3rem Sans-serif;
+  font-weight: 300;
+  background: #009E95;
+  color: #1a3f46;
+  border: solid 0px #009E95;
+  border-radius:5px;
+  top: -8.2rem;
+  height: 7.5rem;
+  left: -2.8rem;
+  right: -2.8rem;
+  padding-top: 1rem;
+}
+
+.keyboard-key:not(.special-key).highlighted > .visual-wrapper > span:after {
+  content: "";
+  position: absolute;
+  left: 0rem;
+  top: 0rem;
+  bottom: 0rem;
+  right: 0rem;
+  z-index: -1;
+  background-color: #363839;
+}
+
+.keyboard-key:not(.special-key).highlighted:last-child > .visual-wrapper > span:after {
+  right: 0rem;
+}
+
+.keyboard-key:not(.special-key).highlighted:last-child  > .visual-wrapper > span {
+  right: -1px;
+}
+
+.keyboard-key:not(.special-key).highlighted:first-child  > .visual-wrapper > span {
+  left: -1px;
+}
+
+/*  Special keys */
+.keyboard-key.special-key > .visual-wrapper {
+  border-color: #2a2c2e;
+  background: #424855;
+}
+.keyboard-key.special-key > .visual-wrapper > span { 
+  color: #ccc;
+  font: 2.6rem/3.8rem 'Keyboard Symbols', Sans-serif;
+}
+.keyboard-key[data-keycode='-2'] > .visual-wrapper > span {
+    font: 300 2.6rem/3.8rem Sans-serif;
+}
+
+/* Highlight for special keys */
+.keyboard-key.special-key.highlighted {
+  position: relative;
+  z-index: 100;
+}
+.keyboard-key.special-key.highlighted > .visual-wrapper {
+  background: #009E95;
+  border: solid 1px #009E95;
+  border-radius:5px;
+  border-top: none;
+  margin: -0.5rem 0 0;
+  /*height: 5.0rem;
+  bottom: 0.3rem;*/
+  height: 6rem;/*特殊键的高亮显示高度*/
+  bottom: 0.0rem;
+  
+}
+
+.keyboard-key.special-key.highlighted > .visual-wrapper:after {
+  content: "";
+  position: absolute;
+  left: 0rem;
+  top: 0rem;
+  bottom: 0rem;
+  right: 0rem;
+  z-index: -1;
+  background-color: #363839;
+}
+.keyboard-key.special-key.highlighted:last-child > .visual-wrapper:after {
+  right: 0rem;
+}
+.keyboard-key.special-key.highlighted > .visual-wrapper:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0.5rem;
+  background: #009E95;
+  z-index: 1;
+} 
+
+.keyboard-key.special-key.highlighted > .visual-wrapper > span {
+  font: 4.6rem/3rem 'Keyboard Symbols', Sans-serif;
+  font-weight: 500;
+  background: #009E95;
+  color: #1a3f46;
+  border: solid 0px #009E95;
+  border-radius:5px;
+  top: -6.9rem;
+  height: 6.0rem;
+  left: -0.8rem;
+  right: -0.8rem;
+}
+.keyboard-key.highlighted[data-keycode='-2'] > .visual-wrapper > span {
+  font: 600 1.6rem/2.8rem Sans-serif;
+}
+
+.keyboard-key.special-key.highlighted > .visual-wrapper > span:after {
+  content: "";
+  position: absolute;
+  left: 0rem;
+  top: 0rem;
+  bottom: 0rem;
+  right: 0rem;
+  z-index: -1;
+  background-color: #363839;
+}
+.keyboard-key.special-key.highlighted:last-child > .visual-wrapper > span:after {
+  right: 0rem;
+}
+
+.keyboard-key.special-key.highlighted:last-child  > .visual-wrapper > span {
+  right: -1px;
+  border-bottom-right-radius: 0;
+}
+
+.keyboard-key.special-key.highlighted:first-child  > .visual-wrapper > span {
+  left: -1px;
+  border-bottom-left-radius: 0;
+}
+
+.keyboard-key.highlighted[data-keycode="32"] > .visual-wrapper {
+  border: solid 1px #3f5459;
+  /*border-radius: 0.3rem;*/
+  background: #009E95;
+  height: 6.0rem;/*空格键（keycode=32（对应十六进制为20））高亮时的高度*/
+  bottom: 0;
+}
+
+.keyboard-key.highlighted[data-keycode="32"] > .visual-wrapper > span  {
+  /*border: none;
+  border-top: solid 1px #514e4d;
+  background: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  height: 100%;*/
+  display:none;
+}
+
+.keyboard-key.highlighted[data-keycode="32"] > .visual-wrapper:after,
+.keyboard-key.highlighted[data-keycode="32"] > .visual-wrapper:before,
+.keyboard-key.highlighted[data-keycode="32"] > .visual-wrapper > span:after {
+  display: none;
+}
+
+.keyboard-key.highlighted2 {
+  padding: 0 0;
+}
+
+.keyboard-key.highlighted2 >.visual-wrapper {
+  border: solid 0.1rem #009E95;
+}
+
+.keyboard-key.highlighted2.alt-show >.visual-wrapper {
+  border: solid 0.1rem #E35900;
+}
+
+.keyboard-key.highlighted2 .alt-note {
+  visibility: hidden;
+}
+
+/* Key states */
+/* Active */
+.keyboard-key.kbr-key-active > .visual-wrapper > span {
+  color: #009E95;
+}
+/* Hold */
+.keyboard-key.kbr-key-hold> .visual-wrapper {
+  background: #009E95;
+  border: solid 0px #3f5459;
+}
+.keyboard-key.kbr-key-hold> .visual-wrapper > span {
+  background: none;
+  color: #1e4a52;
+ }
+
+
+/* IMEs */
+
+#keyboard-candidate-panel {
+    height: 6.5rem;
+    overflow: auto;
+    white-space: nowrap;
+    color: #8C8D93;
+    background: #24272D;
+    border-top: 0px solid #e8e8ff;
+    border-bottom: 0px solid #808098;
+    display: none;
+    padding-top: 2rem;
+}
+
+#keyboard.candidate-panel #keyboard-candidate-panel {
+  display: block;
+  width: 100%;
+  overflow-y: hidden;
+}
+
+#keyboard-candidate-panel span {
+  /*border-left: 1px solid #e8e8ff;
+  border-right: 1px solid #808098;*/
+    font-size: 2.6rem;
+    line-height: 4.3rem;
+    min-width: 3rem;
+    display: inline-block;
+    padding: 0 8px;
+    text-align: center;
+}
+
+#keyboard-candidate-panel span.first {
+ color: #B1B2B6;
+}
+
+#keyboard-candidate-panel span label.codetip {
+ color: #009E95;
+}
+
+#keyboard-candidate-panel span[data-active="1"] {
+  background: rgb(161,158,153);
+}
+
+.alt-note {
+  position: absolute;
+  top: 0.2rem;
+  right: 0.2rem;
+  color: #009E95;
+  font: 1.1rem/1.1rem Sans-serif;
+}
+
+.keyboard-key.highlighted .alt-note {
+  visibility: hidden;
+}
+
+#keyboard-candidate-panel .tool:last-child {
+  color: #b1b2b6;
+  float: right;
+}
+
+#keyboard-candidate-panel .tool:not(last-child) {
+  color: #b1b2b6;
+  float: left;
+}
+
+.emoji{
+	position: absolute;
+	border-top: 1px solid #a6a9ab;
+	background: #111111;
+	z-index: 99;
+	overflow-y: auto;
+	overflow-x: hidden;
+	pointer-events: auto;
+}
+
+.emoji button{
+  background: #24272D;
+  color: #ddd;
+  font: 1.6rem/2.8rem Sans-serif;
+  border: 1px solid #000;
+  display: inline-block;
+  border-radius: 3px;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.emoji button:active{
+	background-color:#009E95;
+	color: #000;
+}
+
+.editor{
+	position: absolute;
+	border-top: 1px solid #a6a9ab;
+	background: #111111;
+	z-index: 99;
+	overflow-y: auto;
+	overflow-x: hidden;
+	pointer-events: auto;
+}
+
+.editor button{
+  position: absolute;
+  background: #24272D;
+  width: 8rem;
+  color: #B1B2B6;
+  font: 2.6rem/2.8rem Sans-serif;
+  border: 1px solid #000;
+  display: inline-block;
+  border-radius: 0px;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.editor button.arrow{
+	width:4.2rem;
+}
+
+.editor button.select{
+	width: 4.2rem;
+}
+
+.editor button.select.selected{
+	background-color:#009E95;
+	color: #000;
+}
+
+.editor button:active{
+	background-color:#009E95;
+	color: #000;
+}
+
+#keyboard-code-panel{
+	position:fixed;
+	left: 1.0rem;
+	top: 0.1rem;
+	background: rgba(255,255,255,0.6);
+	white-space:nowrap;
+    font: 2.0rem/2.4rem Sans-serif;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+#keyboard-code-panel .code-got{
+	color: #000;
+	font: 1rem;
+}
+
+#keyboard-code-panel .code-text{
+	color: #000;
+	font: 1rem;
+}
+
+#keyboard-code-panel .code-caret{
+	color: #000;
+	border: 1px solid #080;
+}
