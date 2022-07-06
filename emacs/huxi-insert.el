@@ -80,6 +80,16 @@
   (interactive)
   (insert " = "))
 
+(defun huxi-insert-sharp ()
+  "插入#"
+  (interactive)
+  (insert "#"))
+
+(defun huxi-insert-star ()
+  "插入*"
+  (interactive)
+  (insert "*"))
+
 (defun huxi-insert-= ()
   "插入="
   (interactive)

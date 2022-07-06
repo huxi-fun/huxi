@@ -230,6 +230,7 @@ cmy ╟Н
 cng ╠л
 cnj ╧Е
 coa ╢╨
+cok Х╓
 cop уД
 cow аА ЯЖ
 cpo Вч
@@ -1746,7 +1747,7 @@ nxz ╬С
 nya вп
 nyb ╫║
 nyd рз
-nyj ке
+nyj ке ы╓
 nym хт
 nyn ╥П
 nyz ╧╙
@@ -3241,6 +3242,7 @@ zwn кУ
 zwo Гм
 zwy мЯ
 zx ╬╜
+zx; Ф╓
 zxb ╦╬ рО
 zxe е╕
 zxk бл

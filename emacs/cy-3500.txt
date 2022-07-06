@@ -262,6 +262,7 @@ cmy 邦
 cng 碧
 cnj 瑰
 coa 春
+cok 瑜
 cop 珍
 cow 玲 聆
 cpo 鬓
@@ -1778,7 +1779,7 @@ nxz 倔
 nya 仔
 nyb 健
 nyd 亿
-nyj 伺
+nyj 伺 伽
 nym 仍
 nyn 佛
 nyz 躬
