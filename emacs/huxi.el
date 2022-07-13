@@ -658,13 +658,14 @@ beginning of line"
                        (not (seq-contains-p ch-list
                                             (char-to-string last-command-event)
                                             ))
-                       (stringp cc))
+                       ;; (stringp cc)
+                       )
 
                   )
               (progn
                 (when (< 1 (length (car huxi-current-choices)))
                   (huxi-delete-overlays)
-                  (insert cc  )
+                  (insert (if (consp cc) (car cc) cc))
                   (huxi-setup-overlays)
                   )
                 (setq huxi-current-key (char-to-string last-command-event)))
