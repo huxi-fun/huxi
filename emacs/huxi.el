@@ -654,7 +654,7 @@ beginning of line"
                   (and (= 2 key-len)
                        (= 1 ch-len))
                   (and (= 2 key-len)
-                       (= ch-len 2)
+                       ;; (= ch-len 2) ;连续输入，取消注释，三个字母无字时，显示字母
                        (not (seq-contains-p ch-list
                                             (char-to-string last-command-event)
                                             ))
