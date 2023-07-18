@@ -2508,6 +2508,7 @@ uho 炼
 uhp 惭
 uhw 憾
 uhx 炬
+uhz 炖
 uie 悼
 uij 粘
 ujd 烟

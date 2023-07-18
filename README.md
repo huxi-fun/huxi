@@ -110,7 +110,7 @@
 
 方法1: 安装 `Termux` ，再安装 Emacs 或 Vim，再按照上边的方法配置，同时使用 `Hacker’s Keyboard` 或 `AnySoftKeyboard` 键盘APP会方便些。
 
-方法2: 直接使用 `Yong小小输入法` 手机APP，再复制 `yong` 目录中的内容到 `sdcard/yong` 目录下。
+方法2: 直接安装 `yong/huxi-small.apk`。
 
 我对APP进行了定制，这样在手机和平板上使用时就很方便了，以下是android平板上的截图：
 
