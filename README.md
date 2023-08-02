@@ -1,3 +1,7 @@
+说明：这个页面不再维护，最新网址是：
+
+[https://github.com/huxifun/huxi-chinese](https://github.com/huxifun/huxi-chinese)
+
 # 呼吸中文输入法
 
 版本： 2.0
